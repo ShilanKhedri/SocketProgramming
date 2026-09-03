@@ -1,61 +1,69 @@
-نام: شیلان خدری
+<div dir="ltr" align="left">
 
-شماره دانشجویی: 40117023126
+# Multi-Client Chat Application
 
-صفحه گیتهاب: https://github.com/ShilanKhedri
+A phased implementation of a multi-client chat system built in Python using socket programming, threading, and a GUI interface.
 
+## 🛠️ How to Run
 
-نحوه اجرا
-اجرای سرور:
+### 1. Start the Server
+Run the following command to launch the server (runs on `127.0.0.1:12345` by default):
 
+```bash
 python server.py
+```
 
-سرور روی 127.0.0.1:12345 اجرا می‌شود.
+### 2. Start the Client
+Run the client script in a separate terminal window:
 
-اجرای کلاینت:
-
+```bash
 python client.py
+```
 
-برای فازهای 1-3: پیام‌ها از طریق ترمینال ارسال/دریافت می‌شوند.
+* **Phases 1–3:** Messages are sent and received via the command-line interface (CLI).
+* **Phase 4:** Launches a Graphical User Interface (GUI).
 
-برای فاز 4: رابط کاربری گرافیکی باز می‌شود.
+---
 
-دستورات:
+## 💬 Commands
 
-/exit: خروج از چت.
+* `/exit` — Disconnect and leave the chat room.
+* `/list` — Display the list of currently connected users *(Phase 4)*.
+* `/pm <userIP> <message>` — Send a private message to a specific user *(Phase 4)*.
 
-/pm <userIP> <message>: ارسال پیام خصوصی (فاز 4).
+---
 
-/list: نمایش کاربران متصل (فاز 4).
+## 📁 Project Structure
 
-ساختار پروژه
+```text
+├── server.py   # Server implementation handling connections and message routing
+└── client.py   # Client application for connection management and user interface
+```
 
+> **Note:** Designed with clean architecture principles, self-explanatory naming, and robust error handling.
 
-server.py: کد سرور برای مدیریت اتصال‌ها و پیام‌ها.
+---
 
-client.py: کد کلاینت برای اتصال به سرور و چت.
+## 🚀 Development Phases
 
+### Phase 1: Basic Connection Setup
+* Basic handshake between client and server.
+* Server receives `"Hello Server!"` and responds with `"Hello Client!"`.
+* Graceful connection termination.
 
+### Phase 2: Multi-Client Support
+* Multithreading integrated on the server side to handle multiple concurrent clients.
+* Connection and disconnection events logged with client IP addresses.
 
-معماری تمیز با نام‌گذاری مناسب و مدیریت خطاها.
+### Phase 3: Group Chat & Broadcasting
+* Broadcasts messages from any client to all active participants.
+* Displays sender IP addresses alongside incoming messages.
+* `/exit` command integrated for clean disconnection.
 
-فازهای پروژه
+### Phase 4: Graphical Interface & Advanced Features
+* Graphical User Interface built with `tkinter`.
+* Support for private messaging using `/pm`.
+* Display of usernames, timestamps, and active user list via `/list`.
+* Comprehensive error handling for network interruptions.
 
-فاز اول: ارتباط اولیه
-سرور پیام «سلام سرور!» را دریافت و پاسخ «سلام کلاینت!» را ارسال می‌کند.
-اتصال به‌درستی بسته می‌شود.
-
-فاز دوم: چندین کلاینت
-سرور با Threading چندین کلاینت را مدیریت می‌کند.
-پیام‌های اتصال/قطع اتصال با IP کلاینت ثبت می‌شوند.
-
-فاز سوم: پیام‌های گروهی
-پیام یک کلاینت به همه ارسال می‌شود.
-پیام‌ها با IP فرستنده نمایش داده می‌شوند.
-دستور /exit برای خروج.
-
-فاز چهارم: رابط کاربری
-رابط گرافیکی با tkinter.
-پیام خصوصی با /pm.
-نمایش نام کاربری، زمان، و لیست کاربران با /list.
-مدیریت خطاها.
+</div>
